@@ -1,0 +1,42 @@
+﻿@page "/sessions/device/{sessionId:guid}/magnetometer"
+@using MotionController.Sensor.Client;
+
+<PageTitle>Device Session - Magnetometer - @SessionId</PageTitle>
+
+<MudTable T="Db.Data.Models.DeviceSessionMagnetometer" Items="@DeviceSessionMagnetometers" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>DeviceSessionId</MudTh>
+        <MudTh>North</MudTh>
+        <MudTh>XRaw</MudTh>
+        <MudTh>YRaw</MudTh>
+        <MudTh>ZRaw</MudTh>
+        <MudTh>Timestamp</MudTh>
+        <MudTh>Created</MudTh>
+        <MudTh>Modified</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="DeviceSessionId">@context.DeviceSessionId</MudTd>
+        <MudTd DataLabel="North">@context.North</MudTd>
+        <MudTd DataLabel="XRaw">@context.XRaw</MudTd>
+        <MudTd DataLabel="YRaw">@context.YRaw</MudTd>
+        <MudTd DataLabel="ZRaw">@context.ZRaw</MudTd>
+        <MudTd DataLabel="Timestamp">@context.Timestamp</MudTd>
+        <MudTd DataLabel="Created">@context.Created</MudTd>
+        <MudTd DataLabel="Modified">@context.Modified</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@inject IDeviceSessionClient DeviceSessionClient
+@code {
+    [Parameter]
+    public Guid SessionId { get; set; }
+
+    private IEnumerable<Db.Data.Models.DeviceSessionMagnetometer> DeviceSessionMagnetometers { get; set; } = Array.Empty<Db.Data.Models.DeviceSessionMagnetometer>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        DeviceSessionMagnetometers = await DeviceSessionClient.GetDeviceSessionMagnetometerAsync(SessionId, CancellationToken.None);
+    }
+}

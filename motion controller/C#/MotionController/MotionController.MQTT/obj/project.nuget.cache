@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lQ9K+IMWytMvd+RHGrXQgUELCG2AVS96qOzwCQ5f5Dzx7PJSjNQ8jYD7hiXcE9D14FnNQZYpxfiGkU0ym/lYVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\micha\\src\\H4\\CSharp\\MotionController\\MotionController.MQTT\\MotionController.MQTT.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\micha\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

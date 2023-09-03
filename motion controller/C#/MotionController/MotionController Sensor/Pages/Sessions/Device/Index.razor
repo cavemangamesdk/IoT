@@ -1,0 +1,39 @@
+﻿@page "/sessions/device"
+@using MotionController.Sensor.Client;
+
+<PageTitle>Device Sessions</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<MudTable T="Db.Data.Models.DeviceSession" Items="@DeviceSessions" Hover="true" OnRowClick="OnRowClickFunc" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>SessionId</MudTh>
+        <MudTh>Created</MudTh>
+        <MudTh>Modified</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="SessionId">@context.SessionId</MudTd>
+        <MudTd DataLabel="Created">@context.Created</MudTd>
+        <MudTd DataLabel="Modified">@context.Modified</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@inject NavigationManager NavigationManager
+@inject IDeviceSessionClient DeviceSessionClient
+@code {
+    private IEnumerable<Db.Data.Models.DeviceSession> DeviceSessions { get; set; } = Array.Empty<Db.Data.Models.DeviceSession>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        DeviceSessions = await DeviceSessionClient.GetDeviceSessionsAsync();
+    }
+
+    public void OnRowClickFunc(TableRowClickEventArgs<Db.Data.Models.DeviceSession> args)
+    {
+        NavigationManager.NavigateTo($"/sessions/device/{args.Item.SessionId}");
+    }
+}

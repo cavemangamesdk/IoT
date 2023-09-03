@@ -1,0 +1,45 @@
+﻿@page "/sessions/game"
+@using MotionController.Sensor.Client;
+
+<PageTitle>Device Sessions</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<MudTable T="Db.Data.Models.GameSession" Items="@GameSessions" Hover="true" OnRowClick="OnRowClickFunc" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>SessionId</MudTh>
+        <MudTh>PlayerName</MudTh>
+        <MudTh>Lives</MudTh>
+        <MudTh>GameTime</MudTh>
+        <MudTh>Created</MudTh>
+        <MudTh>Modified</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="SessionId">@context.SessionId</MudTd>
+        <MudTd DataLabel="PlayerName">@context.PlayerName</MudTd>
+        <MudTd DataLabel="Lives">@context.Lives</MudTd>
+        <MudTd DataLabel="GameTime">@context.GameTime</MudTd>
+        <MudTd DataLabel="Created">@context.Created</MudTd>
+        <MudTd DataLabel="Modified">@context.Modified</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@inject NavigationManager NavigationManager
+@inject IGameSessionClient GameSessionClient
+@code {
+    private IEnumerable<Db.Data.Models.GameSession> GameSessions { get; set; } = Array.Empty<Db.Data.Models.GameSession>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        GameSessions = await GameSessionClient.GetGameSessionsAsync();
+    }
+
+    public void OnRowClickFunc(TableRowClickEventArgs<Db.Data.Models.GameSession> args)
+    {
+        NavigationManager.NavigateTo($"/sessions/game/{args.Item.SessionId}");
+    }
+}

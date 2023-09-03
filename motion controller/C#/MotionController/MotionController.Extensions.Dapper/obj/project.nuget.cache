@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "R3EjTsF7vl0xZiymhLEj1oOJdwRMR2XUMbc1pik0bNBCMtjBuV1rNLTCSTmebu8AwcY0hDahdE1bchoKXLPK4Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\micha\\src\\H4\\CSharp\\MotionController\\MotionController.Extensions.Dapper\\MotionController.Extensions.Dapper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\micha\\.nuget\\packages\\dapper\\2.0.143\\dapper.2.0.143.nupkg.sha512"
+  ],
+  "logs": []
+}

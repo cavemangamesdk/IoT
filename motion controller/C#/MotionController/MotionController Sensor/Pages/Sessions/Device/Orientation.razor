@@ -1,0 +1,46 @@
+﻿@page "/sessions/device/{sessionId:guid}/orientation"
+@using MotionController.Sensor.Client;
+
+<PageTitle>Device Session - Orientation - @SessionId</PageTitle>
+
+<MudTable T="Db.Data.Models.DeviceSessionOrientation" Items="@DeviceSessionOrientations" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>DeviceSessionId</MudTh>
+        <MudTh>RollDegrees</MudTh>
+        <MudTh>PitchDegrees</MudTh>
+        <MudTh>YawDegrees</MudTh>
+        <MudTh>RollRadians</MudTh>
+        <MudTh>PitchRadians</MudTh>
+        <MudTh>YawRadians</MudTh>
+        <MudTh>Timestamp</MudTh>
+        <MudTh>Created</MudTh>
+        <MudTh>Modified</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="DeviceSessionId">@context.DeviceSessionId</MudTd>
+        <MudTd DataLabel="RollDegrees">@context.RollDegrees</MudTd>
+        <MudTd DataLabel="PitchDegrees">@context.PitchDegrees</MudTd>
+        <MudTd DataLabel="YawDegrees">@context.YawDegrees</MudTd>
+        <MudTd DataLabel="RollRadians">@context.RollRadians</MudTd>
+        <MudTd DataLabel="PitchRadians">@context.PitchRadians</MudTd>
+        <MudTd DataLabel="YawRadians">@context.YawRadians</MudTd>
+        <MudTd DataLabel="Timestamp">@context.Timestamp</MudTd>
+        <MudTd DataLabel="Created">@context.Created</MudTd>
+        <MudTd DataLabel="Modified">@context.Modified</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@inject IDeviceSessionClient DeviceSessionClient
+@code {
+    [Parameter]
+    public Guid SessionId { get; set; }
+
+    private IEnumerable<Db.Data.Models.DeviceSessionOrientation> DeviceSessionOrientations { get; set; } = Array.Empty<Db.Data.Models.DeviceSessionOrientation>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        DeviceSessionOrientations = await DeviceSessionClient.GetDeviceSessionOrientationAsync(SessionId, CancellationToken.None);
+    }
+}

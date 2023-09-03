@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<PageTitle>MotionController Sensor</PageTitle>
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudText Typo="Typo.h4">MotionController</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/cavemangamesdk/H4" Target="_blank" />
+    </MudAppBar>
+    <MudDrawer Open="true" ClipMode="DrawerClipMode.Docked" Elevation="1" Variant="@DrawerVariant.Mini">
+        <MudNavMenu>
+            <MudNavLink Match="NavLinkMatch.All" Href="/" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+            <MudNavGroup Title="Sessions" @bind-Expanded="IsExpanded" Icon="@Icons.Material.Filled.Assessment">
+                <MudNavLink Href="/sessions/game" Icon="@Icons.Material.Filled.VideogameAsset">Game</MudNavLink>
+                <MudNavLink Href="/sessions/device" Icon="@Icons.Material.Filled.Devices">Device</MudNavLink>
+            </MudNavGroup>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent Class="pt-16 px-16">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool IsExpanded { get; set; } = true;
+}

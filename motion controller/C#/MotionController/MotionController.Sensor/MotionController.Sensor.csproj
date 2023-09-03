@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="MQTTnet" Version="4.2.1.781" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MotionController.Extensions.Autofac\MotionController.Extensions.Autofac.csproj" />
+    <ProjectReference Include="..\MotionController.Extensions.Hosting\MotionController.Extensions.Hosting.csproj" />
+    <ProjectReference Include="..\MotionController.MQTT\MotionController.MQTT.csproj" />
+    <ProjectReference Include="..\MotionController.Sensor.Db.Data\MotionController.Sensor.Db.Data.csproj" />
+    <ProjectReference Include="..\MotionController.Sensor.Models.Abstractions\MotionController.Sensor.Models.Abstractions.csproj" />
+    <ProjectReference Include="..\MotionController.Sensor.MQTT.Abstractions\MotionController.Sensor.MQTT.Abstractions.csproj" />
+    <ProjectReference Include="..\MotionController.Shared\MotionController.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

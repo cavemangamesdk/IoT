@@ -1,0 +1,104 @@
+﻿@page "/sessions/device/{sessionId:guid}"
+@using MotionController.Sensor.Client;
+
+<PageTitle>Device Session - @SessionId</PageTitle>
+
+<MudText Typo="Typo.h3">Sensors</MudText>
+
+<MudStack Spacing="2">
+    <MudItem>
+        <MudGrid>
+            <MudItem>
+                <MudText Typo="Typo.h5">Temperature °C</MudText>
+                <MudChart ChartType="ChartType.Line" ChartSeries="@TemperatureSeries" ChartOptions="temperatureChartOptions" Width="100%" Height="350px" />
+            </MudItem>
+        </MudGrid>
+    </MudItem>
+
+    <MudItem>
+        <MudButton Href="@HumidityUrl">
+            <MudPaper Width="240px" Elevation="2">
+                <MudText Typo="Typo.h5" Align="Align.Center">Humidity</MudText>
+            </MudPaper>
+        </MudButton>
+    </MudItem>
+    <MudItem>
+        <MudButton Href="@PressureUrl">
+            <MudPaper Width="240px" Elevation="2">
+                <MudText Typo="Typo.h5" Align="Align.Center">Pressure</MudText>
+            </MudPaper>
+        </MudButton>
+    </MudItem>
+    <MudItem>
+        <MudButton Href="@AccelerometerUrl">
+            <MudPaper Width="240px" Elevation="2">
+                <MudText Typo="Typo.h5" Align="Align.Center">Accelerometer</MudText>
+            </MudPaper>
+        </MudButton>
+    </MudItem>
+    <MudItem>
+        <MudButton Href="@GyroscopeUrl">
+            <MudPaper Width="240px" Elevation="2">
+                <MudText Typo="Typo.h5" Align="Align.Center">Gyroscope</MudText>
+            </MudPaper>
+        </MudButton>
+    </MudItem>
+    <MudItem>
+        <MudButton Href="@MagnetometerUrl">
+            <MudPaper Width="240px" Elevation="2">
+                <MudText Typo="Typo.h5" Align="Align.Center">Magnetometer</MudText>
+            </MudPaper>
+        </MudButton>
+    </MudItem>
+    <MudItem>
+        <MudButton Href="@OrientationUrl">
+            <MudPaper Width="240px" Elevation="2">
+                <MudText Typo="Typo.h5" Align="Align.Center">Orientation</MudText>
+            </MudPaper>
+        </MudButton>
+    </MudItem>
+</MudStack>
+
+@inject IDeviceSessionClient DeviceSessionClient
+@code {
+    [Parameter]
+    public Guid SessionId { get; set; }
+
+    private string BaseUrl => $"/sessions/device/{SessionId}/";
+
+    // Environment
+    private string HumidityUrl => $"{BaseUrl}humidity";
+    private string PressureUrl => $"{BaseUrl}pressure";
+
+    // IMU
+    private string AccelerometerUrl => $"{BaseUrl}accelerometer";
+    private string GyroscopeUrl => $"{BaseUrl}gyroscope";
+    private string MagnetometerUrl => $"{BaseUrl}magnetometer";
+    private string OrientationUrl => $"{BaseUrl}orientation";
+
+    private ChartOptions temperatureChartOptions = new ChartOptions();
+    private List<ChartSeries> TemperatureSeries = new List<ChartSeries>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var humidities = await DeviceSessionClient.GetDeviceSessionHumidityAsync(SessionId);
+        var pressures = await DeviceSessionClient.GetDeviceSessionPressureAsync(SessionId);
+
+        temperatureChartOptions = new ChartOptions
+            {
+                YAxisTicks = 1
+            };
+
+        TemperatureSeries.Add(new ChartSeries
+            {
+                Name = "Humidity Temperature °C",
+                Data = humidities.Select(h => (double)h.TemperatureCelsius).ToArray()
+            });
+
+        TemperatureSeries.Add(new ChartSeries
+            {
+                Name = "Pressure Temperature °C",
+                Data = pressures.Select(p => (double)p.TemperatureCelsius).ToArray()
+            });
+    }
+}

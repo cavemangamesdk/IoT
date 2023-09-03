@@ -1,0 +1,877 @@
+{
+  "x-generator": "NSwag v13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Internal MotionController Sensor API",
+    "description": "API interface for all internal sensor operations.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/device/sessions/{sessionId}/accelerometer": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Get a Device Session accelerometer by Session Id",
+        "operationId": "GetDeviceSessionAccelerometerAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceSessionAccelerometer"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/device/sessions": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Gets all Device Sessions",
+        "operationId": "GetDeviceSessionsAsync",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceSession"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/device/sessions/{sessionId}": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Get a Device Session by Session Id",
+        "operationId": "GetDeviceSessionBySessionIdAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/device/sessions/{sessionId}/gyroscope": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Get a Device Session gyroscope by Session Id",
+        "operationId": "GetDeviceSessionGyroscopeAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceSessionGyroscope"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/device/sessions/{sessionId}/humidity": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Get a Device Session humidity by Session Id",
+        "operationId": "GetDeviceSessionHumidityAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceSessionHumidity"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/device/sessions/{sessionId}/magnetometer": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Get a Device Session magnetometer by Session Id",
+        "operationId": "GetDeviceSessionMagnetometerAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceSessionMagnetometer"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/device/sessions/{sessionId}/orientation": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Get a Device Session orientation by Session Id",
+        "operationId": "GetDeviceSessionOrientationAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceSessionOrientation"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/device/sessions/{sessionId}/pressure": {
+      "get": {
+        "tags": [
+          "DeviceSession"
+        ],
+        "summary": "Get a Device Session pressure by Session Id",
+        "operationId": "GetDeviceSessionPressureAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceSessionPressure"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/game/sessions": {
+      "get": {
+        "tags": [
+          "GameSession"
+        ],
+        "summary": "Gets all Game Sessions",
+        "operationId": "GetGameSessionsAsync",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GameSession"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "GameSession"
+        ],
+        "summary": "Adds a Game Session",
+        "operationId": "AddGameSessionAsync",
+        "requestBody": {
+          "x-name": "unityGameSession",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnityGameSession"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/game/sessions/{sessionId}": {
+      "get": {
+        "tags": [
+          "GameSession"
+        ],
+        "summary": "Get a Game Session by Session Id",
+        "operationId": "GetGameSessionBySessionIdAsync",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DeviceSessionAccelerometer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "deviceSessionId": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "roll": {
+                "type": "number",
+                "format": "float"
+              },
+              "pitch": {
+                "type": "number",
+                "format": "float"
+              },
+              "yaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "xRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "yRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "zRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "DatabaseModel": {
+        "type": "object",
+        "x-abstract": true,
+        "additionalProperties": false
+      },
+      "DeviceSession": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "sessionId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "DeviceSessionGyroscope": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "deviceSessionId": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "roll": {
+                "type": "number",
+                "format": "float"
+              },
+              "pitch": {
+                "type": "number",
+                "format": "float"
+              },
+              "yaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "xRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "yRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "zRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "DeviceSessionHumidity": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "deviceSessionId": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "temperatureCelsius": {
+                "type": "number",
+                "format": "float"
+              },
+              "humidityPercentage": {
+                "type": "number",
+                "format": "float"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "DeviceSessionMagnetometer": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "deviceSessionId": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "north": {
+                "type": "number",
+                "format": "float"
+              },
+              "xRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "yRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "zRaw": {
+                "type": "number",
+                "format": "float"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "DeviceSessionOrientation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "deviceSessionId": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "rollDegrees": {
+                "type": "number",
+                "format": "float"
+              },
+              "pitchDegrees": {
+                "type": "number",
+                "format": "float"
+              },
+              "yawDegrees": {
+                "type": "number",
+                "format": "float"
+              },
+              "rollRadians": {
+                "type": "number",
+                "format": "float"
+              },
+              "pitchRadians": {
+                "type": "number",
+                "format": "float"
+              },
+              "yawRadians": {
+                "type": "number",
+                "format": "float"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "DeviceSessionPressure": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "deviceSessionId": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "temperatureCelsius": {
+                "type": "number",
+                "format": "float"
+              },
+              "pressureMillibars": {
+                "type": "number",
+                "format": "float"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "GameSession": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DatabaseModel"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "sessionId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "playerName": {
+                "type": "string",
+                "nullable": true
+              },
+              "lives": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "gameTime": {
+                "type": "string",
+                "format": "duration"
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "modified": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        ]
+      },
+      "UnityGameSession": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "guid"
+          },
+          "playerData": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PlayerData"
+              }
+            ]
+          },
+          "gameData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GameData"
+            }
+          }
+        }
+      },
+      "PlayerData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "lives": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gameTime": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "GameData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ballPosition": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Vector3"
+              }
+            ]
+          },
+          "boardRotation": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Vector3"
+              }
+            ]
+          },
+          "inputData": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Vector2"
+              }
+            ]
+          }
+        }
+      },
+      "Vector3": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "float"
+          },
+          "y": {
+            "type": "number",
+            "format": "float"
+          },
+          "z": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "Vector2": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "float"
+          },
+          "y": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    }
+  }
+}

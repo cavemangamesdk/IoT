@@ -1,0 +1,10 @@
+﻿@page "/sessions/game/{sessionId:guid}"
+@using MotionController.Sensor.Client;
+
+<PageTitle>Game Session - @SessionId</PageTitle>
+
+@inject IGameSessionClient GammeSessionClient
+@code {
+    [Parameter]
+    public Guid SessionId { get; set; }
+}

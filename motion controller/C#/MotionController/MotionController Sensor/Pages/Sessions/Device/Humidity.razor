@@ -1,0 +1,38 @@
+﻿@page "/sessions/device/{sessionId:guid}/humidity"
+@using MotionController.Sensor.Client;
+
+<PageTitle>Device Session - Humidity - @SessionId</PageTitle>
+
+<MudTable T="Db.Data.Models.DeviceSessionHumidity" Items="@DeviceSessionHumidities" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>DeviceSessionId</MudTh>
+        <MudTh>TemperatureCelsius</MudTh>
+        <MudTh>HumidityPercentage</MudTh>
+        <MudTh>Timestamp</MudTh>
+        <MudTh>Created</MudTh>
+        <MudTh>Modified</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="DeviceSessionId">@context.DeviceSessionId</MudTd>
+        <MudTd DataLabel="TemperatureCelsius">@context.TemperatureCelsius</MudTd>
+        <MudTd DataLabel="HumidityPercentage">@context.HumidityPercentage</MudTd>
+        <MudTd DataLabel="Timestamp">@context.Timestamp</MudTd>
+        <MudTd DataLabel="Created">@context.Created</MudTd>
+        <MudTd DataLabel="Modified">@context.Modified</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@inject IDeviceSessionClient DeviceSessionClient
+@code {
+    [Parameter]
+    public Guid SessionId { get; set; }
+
+    private IEnumerable<Db.Data.Models.DeviceSessionHumidity> DeviceSessionHumidities { get; set; } = Array.Empty<Db.Data.Models.DeviceSessionHumidity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        DeviceSessionHumidities = await DeviceSessionClient.GetDeviceSessionHumidityAsync(SessionId, CancellationToken.None);
+    }
+}
